@@ -138,3 +138,7 @@ Aquí mostramos las directivas creadas. Tenemos una que apunta al dominio redire
 ![image](img/Selección_005.png)
 
 Una vez creados los directorios redirect y redirect/target, en esta última descomprimimos el contenido del .zip antes mencionado.
+
+![image](img/Selección_006.png)
+
+El resultado de cada intento de conexión a las direcciones anteriormente nombradas. 
