@@ -58,7 +58,7 @@ alu2302@cloud:~$ sudo systemctl reload nginx.service
 
 ## Sitio web 2
 
-En este caso, el objetivo reside en crear un sitio web con lenguaje python desde un entorno virtual personalizado, conectando este con nuestro servidor Nginx.
+En este caso, el objetivo reside en crear un sitio web con lenguaje python llamado http://now.alu2302.me desde un entorno virtual personalizado, conectando este con nuestro servidor Nginx.
 
 * Ya tenemos instalado el paquete `virtualenv` que utilizamos para crear nuestro primer sitio web con python, por lo que creamos un nuevo entorno virtual para esta práctica.
 
@@ -154,3 +154,45 @@ alu2302@cloud:/etc/nginx/sites-available$ sudo nano now
 * Si reiniciamos el servidor nginx y activamos el script `run.sh` (siempre apuntando al directorio `/home/alu2302/now`, que es donde se encuentra) se iniciará el proceso y funcionará la página.
 
 ![image](img/000046.png)
+
+* Por último instalaremos una aplicación llamada `supervisor`, con la cual controlaremos el arranque y la parada de nuestra aplicación.
+
+```console
+
+alu2302@cloud:~$ sudo apt-get install supervisor
+
+```
+
+* Dentro de la siguiente ruta creamos el fichero now.conf:
+
+```console
+
+alu2302@cloud:~$ sudo nano /etc/supervisor/conf.d/now.conf
+
+```
+
+* Contenido del fichero...
+
+![image](img/000057.png)
+
+* Reiniciamos el servicio supervisor.
+
+```console
+
+alu2302@cloud:~$ sudo systemctl restart supervisor
+
+```
+
+* Comprobamos el estado del servicio
+
+![image](img/000058.png)
+
+* Y realizamos las comprobaciones para ver si las instrucciones que nos ofrece el servicio `supervisor` funcionan correctamente.
+
+![image](img/000059.png)
+
+![image](img/000060.png)
+
+![image](img/000061.png)
+
+![image](img/000062.png)
