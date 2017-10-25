@@ -57,3 +57,100 @@ alu2302@cloud:~$ sudo systemctl reload nginx.service
 ---
 
 ## Sitio web 2
+
+En este caso, el objetivo reside en crear un sitio web con lenguaje python desde un entorno virtual personalizado, conectando este con nuestro servidor Nginx.
+
+* Ya tenemos instalado el paquete `virtualenv` que utilizamos para crear nuestro primer sitio web con python, por lo que creamos un nuevo entorno virtual para esta práctica.
+
+```console
+
+alu2302@cloud:~$ virtualenv .virtualenvs/now
+
+```
+
+* Y para activarlo...
+
+```console
+
+alu2302@cloud:~$ source .virtualenvs/now/bin/activate
+(now) alu2302@cloud:~$
+
+```
+
+* Instalamos (dentro de nuestro entorno virtual) uwsgi, que se encargará de de procesar las peticiones http para aplicaciones con código python.
+
+```console
+
+(now) alu2302@cloud:~$ pip install uwsgi
+
+```
+
+* Y también un entorno de trabajo para desarrollo web llamado flask
+
+```console
+
+(now) alu2302@cloud:~$ pip install flask
+
+```
+
+* Una vez hecho esto, creamos el fichero python `main.py` dentro del directorio `now`, todo esto sin salir del entorno virtual.
+
+```console
+
+(now) alu2302@cloud:~/now$ nano main.py
+
+```
+
+* Este es el contenido del fichero:
+
+![image](img/000044.png)
+
+* Ahora creamos el fichero de configuración de uwsgi, fuera ya de nuestro entorno virtual, pero en el directorio now.
+
+```console
+
+alu2302@cloud:~/now$ nano uwsgi.ini
+
+```
+
+* Este es el contenido de dicho fichero:
+
+![image](img/000048.png)
+
+* Después creamos un pequeño script que activará el proceso uwsgi y el entorno virtual de la aplicación.
+
+```console
+
+alu2302@cloud:~/now$ nano run.sh
+
+```
+
+* Y dentro del mismo...
+
+![image](img/000050.png)
+
+* El siguiente paso es darle permisos 775 al script creado.
+
+```console
+
+alu2302@cloud:~/now$ chmod 775 run.sh
+
+```
+
+![image](img/000052.png)
+
+* Una vez realizado todo esto, toca hacer el virtualhost, así que nos vamos a la ruta correspondiente y creamos el fichero now.
+
+```console
+
+alu2302@cloud:/etc/nginx/sites-available$ sudo nano now
+
+```
+
+* Y dentro del mismo tenemos...
+
+![image](img/000054.png)
+
+* Si reiniciamos el servidor nginx y activamos el script `run.sh` (siempre apuntando al directorio `/home/alu2302/now`, que es donde se encuentra) se iniciará el proceso y funcionará la página.
+
+![image](img/000046.png)
