@@ -6,7 +6,7 @@ La actividad consiste en configurar 2 sitios web (virtual hosts) en nuestro serv
 
 ## Comienzo de la actividad
 
-### Sitio web 1
+## Sitio web 1
 
 Tenemos que crear un sitio web denominado `http://php.alu2302.me`, que lea el contenido PHP de un fichero descargado con anterioridad.
 
@@ -196,3 +196,5 @@ alu2302@cloud:~$ sudo systemctl restart supervisor
 ![image](img/000061.png)
 
 ![image](img/000062.png)
+
+---
