@@ -11,7 +11,7 @@
                 $rows = (int)$_GET["rows"];
                 $cols = (int)$_GET["cols"];
                 if ($rows < 1 or $cols < 1) {
-                  echo("<p style='color:red;'>Debe poner como mínimo 1 columna y 1 fila.</p>");
+                  echo("<p style='color:red;'>You have to specify a number of rows and a number of columns</p>");
                 }
             else {
                 echo("<table border='1'>");
